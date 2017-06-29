@@ -1,0 +1,24 @@
+public static void main(String[] args) {
+        allStruct("/Users/chenbo/Documents/workspace/Study1",1);
+    }
+    public static void allStruct(String dirPath, int link){
+        File f = new File(dirPath);     
+        if(f.isDirectory()){
+            for (int i = 0; i < link; i++) {
+                System.out.print("=");
+            }
+            System.out.println(f.getName());            
+            String[] fs = f.list();
+            link++;
+            for (int i = 0; i < fs.length; i++) {
+                String string = fs[i];
+                File f1 = new File(dirPath, string);
+                allStruct(f1.getPath(), link);
+            }
+        }else{
+            for (int i = 0; i < link; i++) {
+                System.out.print("-");
+            }
+            System.out.println(f.getName());            
+        }
+    }
