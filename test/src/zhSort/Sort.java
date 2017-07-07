@@ -1,18 +1,18 @@
 package zhSort;
 
-import java.text.Collator;
 import java.util.*;
 
 public class Sort {
 	public static void main(String[] args) {
-		Set<Person> m=new TreeSet<Person>(Collator.getInstance(java.util.Locale.CHINA));
+		Set<Person> m=new TreeSet<Person>
+		(new myCompare());
 		m.add(new Person("b"));
 		m.add(new Person("c"));
 		m.add(new Person("a"));
-		m.add(new Person("张三"));
-		m.add(new Person("李四"));
-		m.add(new Person("王五"));
-		m.add(new Person("张陈"));
+		m.add(new Person("寮犱笁"));
+		m.add(new Person("鏉庡洓"));
+		m.add(new Person("鐜嬩簲"));
+		m.add(new Person("寮犲晩"));
 		for(Person p:m){
 		System.out.println(p.name);}
 
