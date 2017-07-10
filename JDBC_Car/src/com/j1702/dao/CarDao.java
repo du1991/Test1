@@ -14,11 +14,15 @@ public class CarDao {
 		Connection co=DBCP.getConnection();
 		GoodsDao gdd=new GoodsDao();
 		Goods gd=gdd.selectById(id);
-		String sql="insert cart(goodsname,num,price) values(?,?,?)";
+		String sql="insert into cart(goodsname,num,price) values(?,?,?)";
 		PreparedStatement ps=co.prepareStatement(sql);
 		ps.setString(1, gd.getName());
 		ps.setInt(2, num);
 		ps.setDouble(3, gd.getPrice());
-		ps.execute();
+		System.out.println(gd.getName()+"::"+gd.getPrice());
+		ps.executeUpdate();
+		
+		System.out.println("tiajia完成");
+		
 	}
 }

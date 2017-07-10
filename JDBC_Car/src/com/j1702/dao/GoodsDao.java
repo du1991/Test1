@@ -28,8 +28,10 @@ public class GoodsDao {
 		ps.setInt(1, id);
 		ResultSet rs=ps.executeQuery();
 		Goods gd=new Goods(id);
+		while(rs.next()){
 		gd.setName(rs.getString("name"));
 		gd.setPrice(rs.getDouble("price"));
+		}
 		return gd;
 	}
 }

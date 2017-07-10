@@ -29,7 +29,7 @@ public class DBCP {
 		Connection co=null;
 		try {
 			co=ds.getConnection();
-			co.setAutoCommit(false);
+//			co.setAutoCommit(false);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

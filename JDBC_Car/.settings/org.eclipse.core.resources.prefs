@@ -1,2 +1,12 @@
 eclipse.preferences.version=1
 encoding//config/dbcp.properties=UTF-8
+encoding//src/com/j1702/action/CarAction.java=UTF-8
+encoding//src/com/j1702/action/GoodsAction.java=UTF-8
+encoding//src/com/j1702/dao/CarDao.java=UTF-8
+encoding//src/com/j1702/dao/GoodsDao.java=UTF-8
+encoding//src/com/j1702/dbcp/DBCP.java=UTF-8
+encoding//src/com/j1702/model/Cart.java=UTF-8
+encoding//src/com/j1702/model/Goods.java=UTF-8
+encoding//src/com/j1702/model/Records.java=UTF-8
+encoding//src/com/j1702/model/Users.java=UTF-8
+encoding//src/com/j1702/view/TestView.java=UTF-8
