@@ -11,4 +11,9 @@ public class CarAction {
 		CarDao c=new CarDao();
 		c.upadte(id,num);
 	}
+	
+	public void selectCart() throws SQLException{
+		CarDao c=new CarDao();
+		c.selectCart();
+	}
 }

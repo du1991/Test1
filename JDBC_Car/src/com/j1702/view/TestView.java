@@ -17,7 +17,8 @@ public class TestView {
 		case "C":
 		case "c":
 		{
-			
+			CarAction c=new CarAction();
+			c.selectCart();
 		}
 		break;
 		case "G":
@@ -31,13 +32,16 @@ public class TestView {
 			int num=scan.nextInt();
 			CarAction c=new CarAction();
 			c.update(op,num);
+			ga.updateGoodsNum(op, num);
 			System.out.println("-----------------------");
 		}
 		break;
 		case "P":
 		case "p":
 		{
-			
+			System.out.println("请输入付款人：");
+			String shop=scan.next();
+			System.out.println("根据购物车中您所选择的商品总额为：");
 		}
 		break;
 		default : scan.close();System.exit(0);

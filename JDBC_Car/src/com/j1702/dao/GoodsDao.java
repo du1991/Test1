@@ -21,7 +21,7 @@ public class GoodsDao {
 						+ rs.getInt("quantity"));}
 	}
 	
-	public Goods selectById(int id) throws SQLException{
+	public Goods selectById(int id) throws SQLException{ //action层不需要写
 		Connection co=DBCP.getConnection();
 		String sql="select * from goods where id=?";
 		PreparedStatement ps=co.prepareStatement(sql);
@@ -31,7 +31,18 @@ public class GoodsDao {
 		while(rs.next()){
 		gd.setName(rs.getString("name"));
 		gd.setPrice(rs.getDouble("price"));
+		gd.setQuantity(rs.getInt("quantity"));
 		}
 		return gd;
 	}
+	
+	public void updateGoodsNum(int id,int num) throws SQLException{
+		Connection co=DBCP.getConnection();
+		String sql="update goods set quantity=? where id=?";
+		PreparedStatement ps= co.prepareStatement(sql);
+		ps.setInt(1, selectById(id).getQuantity()-num);
+		ps.setInt(2, id);
+		ps.execute();
+	}
+	
 }
