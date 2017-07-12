@@ -6,6 +6,7 @@ public class Cart {
 	private String goodsname;
 	private int num;
 	private Double price; 
+	private Double total;
 
 	public int getId() {
 		return id;
@@ -37,6 +38,14 @@ public class Cart {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 	
 	

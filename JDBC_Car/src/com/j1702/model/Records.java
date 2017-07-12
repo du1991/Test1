@@ -5,8 +5,9 @@ public class Records {
 	private int id;
 	private String username;
 	private String goodsname;
-	private Double price;
+	private Double money;
 	private String datetime;
+	private String shopname;
 	
 	public int getId() {
 		return id;
@@ -27,16 +28,22 @@ public class Records {
 		this.goodsname = goodsname;
 	}
 	public Double getPrice() {
-		return price;
+		return money;
 	}
 	public void setPrice(Double price) {
-		this.price = price;
+		this.money = price;
 	}
 	public String getDatetime() {
 		return datetime;
 	}
 	public void setDatetime(String datetime) {
 		this.datetime = datetime;
+	}
+	public String getShopname() {
+		return shopname;
+	}
+	public void setShopname(String shopname) {
+		this.shopname = shopname;
 	}
 	
 	

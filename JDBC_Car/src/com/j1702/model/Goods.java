@@ -9,6 +9,7 @@ public class Goods {
 	private String datetime;
 	private int quantity;
 	
+	public Goods(){}
 	public Goods(int id){
 		this.id=id;
 	}

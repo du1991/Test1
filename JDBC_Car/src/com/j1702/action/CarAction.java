@@ -16,4 +16,14 @@ public class CarAction {
 		CarDao c=new CarDao();
 		c.selectCart();
 	}
+	
+	public Double total() throws SQLException{
+		CarDao c=new CarDao();
+		return c.total();
+	}
+	
+	public void delete() throws SQLException{
+		CarDao c=new CarDao();
+		c.delete();
+	}
 }

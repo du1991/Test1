@@ -4,21 +4,28 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.j1702.dbcp.DBCP;
 import com.j1702.model.Goods;
 
 public class GoodsDao {
 
-	public void selectGoods() throws SQLException{
+	public List<Goods> selectGoods() throws SQLException{
 		Connection co=DBCP.getConnection();
 		String sql="select * from goods";
 		PreparedStatement ps=co.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
+		List<Goods> li=new ArrayList<>();
 		while(rs.next()){
+			Goods gd=new Goods();
+			gd.setId(rs.getInt("id"));
+			li.add(gd);
 		System.out.println("商品编码："+rs.getInt("id")+"\t商品名:"+rs.getString("name")+"\t价格："+rs.getDouble("price")+"\t生产厂家"
 				+ "："+rs.getString("factory")+"\t生产日期："+rs.getString("dateTime")+"\t库存："
 						+ rs.getInt("quantity"));}
+		return li;
 	}
 	
 	public Goods selectById(int id) throws SQLException{ //action层不需要写
