@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 	<%@ page import="java.util.*" %>
 	<%@ page import="com.j1702.model.Goods"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -103,8 +104,7 @@ a {
 </style>
 </head>
 <body>
-<% List<Goods> li=(List<Goods>)request.getAttribute("List_Goods"); 
-out.print(li.get(0).getPicture());
+<% List<Goods> li=(List<Goods>)request.getAttribute("ListGoods"); 
 %>
 
 	<div class="div1">
@@ -113,26 +113,26 @@ out.print(li.get(0).getPicture());
 		<button>购物车</button>
 	</div>
 
-	<%-- <div class="div2">
+	 <div class="div2">
 		<div class="div8">
 			<div class="div4">
 				<div class="div5"
-					style="background-image: <%= li.get(0).getPicture() %>; background-size: cover"></div>
+					style="background-image: url(<%= li.get(0).getPicture() %>); background-size: cover"></div>
 				<div class="div6">num.01</div>
 			</div>
 			<div class="div4">
 				<div class="div5"
-					style="background-image: <%= li.get(1).getPicture()%>; background-size: cover"></div>
+					style="background-image: url(<%= li.get(1).getPicture()%>); background-size: cover"></div>
 				<div class="div6">num.02</div>
 			</div>
 			<div class="div4">
 				<div class="div5"
-					style="background-image: <%= li.get(2).getPicture()%>; background-size: cover"></div>
+					style="background-image: url(<%= li.get(2).getPicture()%>); background-size: cover"></div>
 				<div class="div6">num.03</div>
 			</div>
 			<div class="div4">
 				<div class="div5"
-					style="background-image: <%= li.get(3).getPicture()%>; background-size: cover"></div>
+					style="background-image: url(<%= li.get(3).getPicture()%>); background-size: cover"></div>
 				<div class="div6">num.04</div>
 			</div>
 		</div>
@@ -144,7 +144,7 @@ out.print(li.get(0).getPicture());
 			</ul>
 		</div>
 
-	</div> --%>
+	</div> 
 	<div class="div3"></div>
 </body>
 </html>

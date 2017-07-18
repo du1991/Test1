@@ -13,15 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.j1702.dao.GoodsDao;
 import com.j1702.model.Goods;
 
-@WebServlet("/Servlet")
+@WebServlet("/")
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
     public Servlet() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GoodsDao gdd=new GoodsDao();
 		List<Goods> li=null;
 		try {
@@ -29,7 +30,8 @@ public class Servlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("List_Goods", li);
+		request.setAttribute("ListGoods", li);
+		request.getRequestDispatcher("index1.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

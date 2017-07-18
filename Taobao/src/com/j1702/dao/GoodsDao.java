@@ -12,8 +12,7 @@ import com.j1702.model.Goods;
 
 public class GoodsDao {
 	
-	
-	public List<Goods> getAllGoods() throws SQLException{
+	public static List<Goods> getAllGoods() throws SQLException{
 		Connection co=DB.getConnection();
 		String sql="select * from Goods";
 		PreparedStatement ps=co.prepareStatement(sql);
@@ -28,7 +27,7 @@ public class GoodsDao {
 			gd.setPicture(rs.getString("picture"));
 			li.add(gd);
 		}
-		return null;
+		return li;
 	} 
 	
 }
