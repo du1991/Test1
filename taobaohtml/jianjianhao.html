@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>加减购物车数量</title>
+
+  <style>
+  * {
+  box-sizing: border-box;
+}
+
+.input-number {
+  width: 80px;
+  padding: 0 12px;
+  vertical-align: top;
+  text-align: center;
+  outline: none;
+}
+
+.input-number,
+.input-number-decrement,
+.input-number-increment {
+  border: 1px solid #cccccc;
+  height: 40px;
+  user-select: none;
+}
+
+.input-number-decrement,
+.input-number-increment {
+  display: inline-block;
+  width: 30px;
+  line-height: 38px;
+  background: #f1f1f1;
+  color: #444444;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.input-number-decrement:active,
+.input-number-increment:active {
+  background: #dddddd;
+}
+
+.input-number-decrement {
+  border-right: none;
+  border-radius: 0px 0 0 0px;
+}
+
+.input-number-increment {
+  border-left: none;
+  border-radius: 0 0px 0px 0;
+}</style>
+
+ 
+
+</head>
+
+<body>
+
+  <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10"><span class="input-number-increment">+</span>
+
+  <script src="http://www.zaole.net/sliding.js"></script>
+
+
+  <script>
+    (function() {
+
+  window.inputNumber = function(el) {
+
+    var min = el.attr('min') || false;
+    var max = el.attr('max') || false;
+
+    var els = {};
+
+    els.dec = el.prev();
+    els.inc = el.next();
+
+    el.each(function() {
+      init($(this));
+    });
+
+    function init(el) {
+
+      els.dec.on('click', decrement);
+      els.inc.on('click', increment);
+
+      function decrement() {
+        var value = el[0].value;
+        value--;
+        if(!min || value >= min) {
+          el[0].value = value;
+        }
+      }
+
+      function increment() {
+        var value = el[0].value;
+        value++;
+        if(!max || value <= max) {
+          el[0].value = value++;
+        }
+      }
+    }
+  }
+})();
+
+inputNumber($('.input-number'));
+    //@ sourceURL=pen.js
+  </script>
+
+</body>
+</html>
