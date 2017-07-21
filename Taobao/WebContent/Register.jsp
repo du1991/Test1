@@ -4,13 +4,13 @@
 <html >
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>用户登录</title>
+    <title>用户注册</title>
     <style>
         html,body{height: 100%;margin: 0}
       .div1{height: 75%;
-          background-image: url(http://oowvabkk3.bkt.clouddn.com/TB1bvEOSXXXXXb0aXXXXXXXXXXX-2500-600.jpg);
+          background-image: url(http://oowvabkk3.bkt.clouddn.com/974C2CA5-6584-4372-96EC-7C812DF44778.png);
         background-size: cover;
-          background-position: -600px;}
+    }
         .div2{height:10%;background-color:darkkhaki}
         .div3{height:15%;background-color:antiquewhite}
         .div4{height: 100%;width:190px;background-image: url(http://oowvabkk3.bkt.clouddn.com/CD5F4AFE-4779-4199-888F-A0BD1BC326A4.png);}
@@ -19,11 +19,13 @@
         }
         table,form{width: 100%;height: 100%}
         .td1{font-size: 30px;text-align: center;column-span: "2"}
+        .td2{font-size: 17px;text-align: left}
+        .td3{text-align: right;line-height: 10px}
+        .td4{text-align: right}
         table{line-height: 50px}
         td{text-align: center;font-size: 25px}
-        input{height:40px;width: 210px;font-size: 17px}
+        .input{height:40px;width: 210px;font-size: 17px}
         button{height: 40px;font-size: 25px;}
-        a{text-decoration: none}
     </style>
 </head>
 <body>
@@ -32,15 +34,21 @@
    </div>
     <div class="div1" >
        <div> 
-         <form action="UsersServlet">
+         
+         <form action="RegisterServlet">
          <table>
-          <tr ><td class="td1" colspan="2" >用户登录</td></tr>
+         
+          <tr ><td class="td1" colspan="2" >用户注册</td></tr>
           <tr><td>用户名:</td>
-          <td><input type="text" placeholder="会员名/邮箱/手机号" name="username"></td></tr>
-          <tr><td>密&nbsp;&nbsp;&nbsp;码:</td><td><input type="password" placeholder="请输入密码" name="password">
+          <td><input type="text" class="input" placeholder="会员名/邮箱/手机号" name="username"></td></tr>
+          <tr><td >密&nbsp;&nbsp;&nbsp;码:</td><td><input class="input" type="password" placeholder="请输入密码" name="password">
           </td> </tr>
-          <tr><td><button type="submit">登录</button></td>
-          <td> <button><a href="Register.jsp">免费注册</a></button></td>
+          <tr><td style="font-size:16px">再次输入密码:</td><td><input type="password" class="input" placeholder="请再次输入密码" name="repassword">
+          </td> </tr>
+          <tr><td class="td3"><input type="checkbox" value="clause" name="clause" > 
+          </td> <td class="td2">霸王条款</td></tr>
+          <tr><td class="td4"><button type="submit" >提交</button></td>
+          <td> <button type="reset">重置</button></td>
           </tr>
           </table></form>
           </div>

@@ -25,12 +25,30 @@ public class Servlet extends HttpServlet {
 	protected  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GoodsDao gdd=new GoodsDao();
 		List<Goods> li=null;
+		int nowpage=1;
+		if(request.getParameter("page")!=null){
+			nowpage=Integer.parseInt(request.getParameter("page"));
+		}
 		try {
-			li=gdd.getAllGoods();
+			li=gdd.getAllGoods(nowpage);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("ListGoods", li);
+		StringBuffer sb=new StringBuffer();
+		int pageCount=0;
+		try {
+			int Counts=gdd.selectCount();
+			if(Counts%4==0){pageCount=Counts/4;}
+			else{pageCount=Counts/4+1;}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for(int i=1;i<=pageCount;i++){
+			if(i==nowpage){sb.append("[" + i + "]");}
+			else{sb.append("<a href='Servlet?page="+i+"'>"+i+"</a>");}
+		}
+		request.setAttribute("bar", sb.toString());
 		request.getRequestDispatcher("index1.jsp").forward(request, response);
 	}
 
