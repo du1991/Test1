@@ -13,11 +13,17 @@ import com.j1702.model.Users;
 
 public class CartsDao {
 	
-
+	public void delete(Carts ca) throws SQLException{
+		Connection co=DB.getConnection();
+		String sql="delete from Carts where id=?";
+		PreparedStatement ps=co.prepareStatement(sql);
+		ps.setInt(1, ca.getId());
+		ps.execute();
+	}
 	
 	public void insert(Carts ca) throws SQLException{
 		Connection co=DB.getConnection();
-		String sql="insert Carts(picture,price,lowprice,buynum,totalmoney,userid) values(?,?,?,?,?,?)";
+		String sql="insert Carts(picture,price,lowprice,buynum,totalmoney,userid,num,goodsname) values(?,?,?,?,?,?,?,?)";
 		PreparedStatement ps=co.prepareStatement(sql);
 		ps.setString(1, ca.getPicture());
 		ps.setFloat(2, ca.getPrice());
@@ -25,6 +31,8 @@ public class CartsDao {
 		ps.setInt(4, ca.getBuynum());
 		ps.setFloat(5, ca.getTotalmoney());
 		ps.setInt(6, ca.getUserid());
+		ps.setInt(7, ca.getNum());
+		ps.setString(8, ca.getGoodsname());
 		ps.execute();
 		
 	}
@@ -46,6 +54,8 @@ public class CartsDao {
 			ca.setTotalmoney(rs.getFloat("totalmoney"));
 			ca.setUserid(rs.getInt("userid"));
 			ca.setTime(rs.getString("optime"));
+			ca.setNum(rs.getInt("num"));
+			ca.setGoodsname(rs.getString("goodsname"));
 			li.add(ca);
 		}
 		return li;

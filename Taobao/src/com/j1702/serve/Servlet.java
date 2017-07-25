@@ -39,8 +39,8 @@ public class Servlet extends HttpServlet {
 		int pageCount=0;
 		try {
 			int Counts=gdd.selectCount();
-			if(Counts%4==0){pageCount=Counts/4;}
-			else{pageCount=Counts/4+1;}
+			if(Counts%10==0){pageCount=Counts/10;}
+			else{pageCount=Counts/10+1;}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

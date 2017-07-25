@@ -10,8 +10,8 @@ public class Carts {
 	private Float totalmoney;
 	private int userid;
 	private String time;
-	
-	
+	private int num;
+	private String goodsname;
 	
 	public int getId() {
 		return id;
@@ -60,6 +60,18 @@ public class Carts {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public String getGoodsname() {
+		return goodsname;
+	}
+	public void setGoodsname(String goodsname) {
+		this.goodsname = goodsname;
 	}
 	
 	

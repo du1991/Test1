@@ -47,7 +47,8 @@ public class CartServlet extends HttpServlet {
 		ca.setPrice(gd.getPrice());
 		ca.setTotalmoney(gd.getLowprice()*buynum);
 		ca.setUserid(uss.getId());
-		
+		ca.setNum(gd.getNum());
+		ca.setGoodsname(gd.getName());
 		
 		CartsDao cad=new CartsDao();
 		try {

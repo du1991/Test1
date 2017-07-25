@@ -15,9 +15,9 @@ public class GoodsDao {
 	
 	public  List<Goods> getAllGoods(int nowpage) throws SQLException{
 		Connection co=DB.getConnection();
-		String sql="select * from Goods limit ?,4";
+		String sql="select * from Goods limit ?,10";
 		PreparedStatement ps=co.prepareStatement(sql);
-		ps.setInt(1, (nowpage-1)*4);//可能有误
+		ps.setInt(1, (nowpage-1)*10);
 		ResultSet rs=ps.executeQuery();
 		List<Goods> li=new ArrayList<Goods>();
 		while(rs.next()){
@@ -95,8 +95,6 @@ public class GoodsDao {
 		ps.setString(4, g.getPicture());
 		ps.setInt(5, g.getId());
 		ps.execute();
-		
-		
 	}
 	
 	public  void delete(Goods gd) throws SQLException{

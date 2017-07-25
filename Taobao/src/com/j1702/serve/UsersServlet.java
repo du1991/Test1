@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.Session;
-
 import com.j1702.dao.UsersDao;
 import com.j1702.model.Users;
 
@@ -46,7 +44,8 @@ public class UsersServlet extends HttpServlet {
 			}
 		}}
 		if(count==0){
-			response.getWriter().write("登录失败！请检查账户和密码，没有账号请先注册！");
+			request.setAttribute("er", 1);
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 	}
 

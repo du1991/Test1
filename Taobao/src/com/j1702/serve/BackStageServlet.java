@@ -65,7 +65,8 @@ public class BackStageServlet extends HttpServlet {
 		
 		//修改处理
 		if(request.getParameter("newpicture")!=null||request.getParameter("newprice")!=null||
-				request.getParameter("newlowprice")!=null||request.getParameter("newnum")!=null){
+				request.getParameter("newlowprice")!=null||request.getParameter("newnum")!=null||
+				request.getParameter("name")!=null){
 			int newid=Integer.parseInt(request.getParameter("id"));
 			Goods oldgood=null;
 			try {
@@ -77,6 +78,12 @@ public class BackStageServlet extends HttpServlet {
 			if(request.getParameter("newpicture")!=null){
 				newpicture=request.getParameter("newpicture");
 			}
+			
+			String newname=oldgood.getName();
+			if(request.getParameter("newname")!=null){
+				newpicture=request.getParameter("newname");
+			}
+			
 			Float newprice=oldgood.getPrice();
 			if(request.getParameter("newprice")!=null){newprice=Float.parseFloat(request.getParameter("newprice"));}
 			Float newlowprice=oldgood.getLowprice();
@@ -94,6 +101,7 @@ public class BackStageServlet extends HttpServlet {
 			good.setLowprice(newlowprice);
 			good.setNum(newnum);
 			good.setId(newid);
+			good.setName(newname);
 			try {
 				gdd.updateById(good);
 			} catch (SQLException e) {
@@ -117,8 +125,8 @@ public class BackStageServlet extends HttpServlet {
 		int pageCount=0;
 		try {
 			int Counts=gdd.selectCount();
-			if(Counts%4==0){pageCount=Counts/4;}
-			else{pageCount=Counts/4+1;}
+			if(Counts%10==0){pageCount=Counts/10;}
+			else{pageCount=Counts/10+1;}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

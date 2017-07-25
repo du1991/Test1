@@ -23,7 +23,9 @@ public class RegisterServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		if(!(request.getParameter("username").trim().equals(""))&&!(request.getParameter("password").trim().equals(""))){
+		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		String repassword=request.getParameter("repassword");
@@ -39,9 +41,12 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
+		
 		for(Users u:li){
 			if(u.getUsername().equals(username)){
-				response.getWriter().write("该名字已存在，请更换名字");
+				request.setAttribute("dou", 1);
+				request.getRequestDispatcher("Register.jsp").forward(request, response);
 				count++;
 			}
 		}
@@ -53,16 +58,23 @@ public class RegisterServlet extends HttpServlet {
 					us.setUsername(username);
 					try {
 						ud.insertUser(us);
-						response.getWriter().write("注册成功！请返回登录！");
+						response.getWriter().write("恭喜您注册成功!<a href='Login.jsp'>请点击登录</a>");
+						
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 				}
-				else{response.getWriter().write("你没有同意协议!");}
+				else{request.setAttribute("dou", 2);
+				request.getRequestDispatcher("Register.jsp").forward(request, response);}
 			}
 			else{
-				response.getWriter().write("两次密码不一样！请重新输入");
+				request.setAttribute("dou", 3);
+				request.getRequestDispatcher("Register.jsp").forward(request, response);
 			}
+		}}
+		else{
+			request.setAttribute("dou", 4);
+			request.getRequestDispatcher("Register.jsp").forward(request, response);
 		}
 		
 	}

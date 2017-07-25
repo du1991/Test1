@@ -1,151 +1,177 @@
 <%@page import="com.j1702.model.Users"%>
+<%@page import="com.j1702.model.Goods"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="java.util.*" %>
-	<%@ page import="com.j1702.model.Goods"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>淘宝网</title>
-<style>
-html, body {
-	margin: 0px;
-	height: 100%
-}
-
-.ul1 {
-	list-style-type: none;
-	margin: 0px;
-	padding: 0px;
-	width: 400px;
-	margin-left: 48%
-}
-
-.ul1>li {
-	float: left;
-	margin-left: 10px
-}
-
-.div1 {
-	border: solid 1px;
-	height: 120px;
-}
-
-.div2 {
-	background-color: bisque;
-	height: 70%;
-	text-align: center;
-	margin-left: 10%;
-	margin-right: 10%
-}
-
-.div3 {
-	border: solid 1px;
-	height: calc(30% - 130px);
-	
-}
-
-.div4 {
-	width: 25%;
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+body, html {
 	height: 100%;
-	background-color: aquamarine;
+	margin: 0;
+}
+
+#global {
+	width: 1900px;
+	height: 100%;
+	background-color: silver;
+}
+
+#heading {
+	width: 100%;
+	height: 100px;
+	background-color: azure;
+}
+
+#content_menu {
+	width: 5%;
+	height: 75%;
+	background-color: #C5E9F3;
+	float: left;
+}
+
+#content_body {
+	width: 90%;
+	height: 75%;
+	background-color: white;
 	float: left
 }
 
-.div5 {
-	height: 80%;
-	border: solid 1px
+#floor {
+	clear: both;
+	height: calc(25% - 100px);
+	background-color: silver;
+	text-align: center;
+	font-size: 30px;
 }
 
-.div6 {
-	height: 20%;
-	background-color: aliceblue;
-	border: solid 1px;
-	
-}
-
-.div7 {
-text-align:center;
-}
-
-.div8 {
-	height: 90%
-}
-
-.div9 {
-	width: 180px;
+.d1 {
+	width: 200px;
 	height: 100%;
-	background-image:
-		url(http://oowvabkk3.bkt.clouddn.com/CD5F4AFE-4779-4199-888F-A0BD1BC326A4.png);
-	
-	float:left;
-}
-.div10{width:500px;height: 90px;}
-.div11{width:220px;height:100%;float:left}
-
-button {
-	position: relative;
-	left: 75%;
-	bottom: 70px;
-	height: 50px;
-	font-size: 25px
+	float: left;
+	background: green;
+	text-align: center;
+	line-height: 100px;
+	font-size: 60px;
+	color: white
 }
 
-.img1 {
-	width: auto;
-	height: 70px;
+.d2 {
+	width: 19%;
+	height: 50%;
+	float: left;
+	background-color: antiquewhite;
+	margin-left: 1%;
+	text-align: center;
+}
+
+.d3 {
+	height: 80%;
+	width: 80%;
+	background-color: beige;
+	margin-left: 10%;
+}
+
+.img {
+	width: 100%;
+	height: 100%;
+}
+
+.d4 {
+	font-size: 40px;
+}
+
+.b1 {
+	height: 45px;
+	font-size: 20px;
+	left: 70%;
+	top: 23%;
+	position: relative
 }
 
 a {
-	text-decoration: none
+	text-decoration: none;
 }
 </style>
 </head>
+
 <body>
-<% List<Goods> li=(List<Goods>)request.getAttribute("ListGoods"); 
-%>
-	<div class="div1">
-		<div class="div10">
-		<div class="div9"></div>
-		<div class="div11"> 
-		<% Users u=(Users)session.getAttribute("ss"); 
-			if(u!=null){ if(u.getPassword().equals("admin")&&u.getUsername().equals("admin")){ %>
-				欢迎你，亲爱的管理员！
-			<% } else{%>
- 				欢迎你，亲爱的用户<%= u.getUsername() %>
-		<% 	}}
-		%>
+	<%
+		List<Goods> li = (List<Goods>) request.getAttribute("ListGoods");
+	%>
+	<div id="global">
+		<div id="heading">
+			<div class="d1">淘宝</div>
+			<%
+				Users u = (Users) session.getAttribute("ss");
+				if (u != null) {
+					if (u.getPassword().equals("admin") && u.getUsername().equals("admin")) {
+			%>
+			欢迎你，亲爱的管理员！
+			<%
+				} else {
+			%>
+			欢迎你，亲爱的用户<%=u.getUsername()%>
+			<%
+				}
+				}
+			%>
+			<%
+				if (u == null) {
+			%>
+			<button class="b1">
+				<a href="Login.jsp">登录/免费注册</a>
+			</button>
+			<%
+				}
+			%>
+			<%
+				if (u != null) {
+					if (u.getPassword().equals("admin") && u.getUsername().equals("admin")) {
+			%>
+			<button class="b1">
+				<a href="BackStageServlet">管理后台</a>
+			</button>
+			<%
+				} else {
+			%>
+			<button class="b1">
+				<a href="CartServletOri">我的购物车</a>
+			</button>
+			<%
+				}
+				} else {
+			%>
+			<button class="b1">
+				<a href="Login.jsp">购物车</a>
+			</button>
+			<%
+				}
+			%>
 		</div>
+		<div id="content_menu"></div>
+		<div id="content_body">
+			<%
+				if (li != null) {
+					for (Goods gd : li) {
+			%>
+			<div class="d2">
+				<div class="d3">
+					<img class="img" src="<%=gd.getPicture()%>" alt="图片损毁，请联系管理员">
+				</div>
+				<div calss="d4">
+					<a href="DetailServlet?DetailGoodId=<%=gd.getId()%>"><%=gd.getName()%><br>点击查看详情</a>
+				</div>
+			</div>
+			<%
+				}
+				}
+			%>
 		</div>
-		
-		<% if(u==null){        %>
-		<button><a href="Login.jsp">登录/免费注册</a></button>
-		<% } %>
-		<% if(u!=null){if(u.getPassword().equals("admin")&&u.getUsername().equals("admin")){%>
-			<button > <a href="BackStageServlet">管理后台</a></button>
-			
-		<% }else{%> 
-		<button > <a href="CartServletOri">我的购物车</a></button>
-		<% }}else{%>
-		<button><a href="Login.jsp">购物车</a></button>
-		 <% }%>
+		<div id="floor"><%=request.getAttribute("bar")%></div>
 	</div>
-	 <div class="div2">
-		<div class="div8">
-		<% if(li!=null) { for(Goods gd:li){%>
-			<div class="div4">
-				<div class="div5"
-		style="background-image: url(<%= gd.getPicture() %>); background-size: cover"></div>
-				<div class="div6"><a href="DetailServlet?DetailGoodId=<%= gd.getId()%>"><%= gd.getName() %><br>点击查看详情</a></div>
-			</div>
-				<% } }%>
-			</div>
-		</div>
-		<div class="div7">
-			<%= request.getAttribute("bar") %>
-		</div>
-	</div> 
-	<div class="div3"></div>
 </body>
 </html>
