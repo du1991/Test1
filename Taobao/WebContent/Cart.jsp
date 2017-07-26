@@ -18,7 +18,9 @@ html, body {
 .div1 {
 	height: 10%;
 }
-
+a{
+text-decoration: none;
+}
 .div1_1 {
 	height: 100%;
 	width: 10%;
@@ -122,7 +124,7 @@ button {
 	%>
 	<div class="div1">
 		<div class="div1_1"></div>
-		<div class="div1_2"></div>
+		<div class="div1_2"><a href="Servlet">返回继续购买</a></div>
 	</div>
 	<div class="div2">
 		<form action="CartDeleteServlet">

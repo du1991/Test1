@@ -15,6 +15,7 @@ import com.j1702.model.Goods;
 
 @WebServlet("/")
 public class Servlet extends HttpServlet {
+	//主界面服务
 	private static final long serialVersionUID = 1L;
 
 	

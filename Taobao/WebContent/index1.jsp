@@ -87,7 +87,7 @@ body, html {
 .b1 {
 	height: 45px;
 	font-size: 20px;
-	left: 70%;
+	left: 65%;
 	top: 23%;
 	position: relative
 }
@@ -135,6 +135,7 @@ a {
 			<button class="b1">
 				<a href="BackStageServlet">管理后台</a>
 			</button>
+		
 			<%
 				} else {
 			%>
@@ -142,8 +143,11 @@ a {
 				<a href="CartServletOri">我的购物车</a>
 			</button>
 			<%
-				}
-				} else {
+				}%>
+				<button class="b1">
+				<a href="LogoutServlet"> 退出登录</a>
+				</button>
+				<% } else {
 			%>
 			<button class="b1">
 				<a href="Login.jsp">购物车</a>
@@ -171,7 +175,7 @@ a {
 				}
 			%>
 		</div>
-		<div id="floor"><%=request.getAttribute("bar")%></div>
+		<div id="floor"><%= request.getAttribute("bar")%></div>
 	</div>
 </body>
 </html>

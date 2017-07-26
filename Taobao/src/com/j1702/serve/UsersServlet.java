@@ -15,6 +15,7 @@ import com.j1702.model.Users;
 
 @WebServlet("/UsersServlet")
 public class UsersServlet extends HttpServlet {
+	//登录Login服务
 	private static final long serialVersionUID = 1L;
    
     public UsersServlet() {
@@ -22,9 +23,8 @@ public class UsersServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String username=request.getParameter("username");
 		response.setContentType("text/html; charset=UTF-8");
+		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		UsersDao ud=new UsersDao();
 		int count=0;
