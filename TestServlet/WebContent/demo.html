@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src="./jquery-3.2.1.min.js"></script>
+
+	<script type="application/javascript">
+	
+	function show(){
+	
+		$.ajax({
+		  url: "a",
+		  dataType:"json",
+		  success: function( result ) {
+			  alert(result);
+			  alert(result["page"])
+			  alert(result["user"].name);
+		    $("p").html( "");
+		  },
+		  error: function(xhr,status,error){
+			  alert(xhr);
+		
+		  }	
+		});
+	}
+	</script>
+
+</head>
+<body>
+	<button onclick="show()">abc</button>
+	<p></p>
+</body>
+</html>
